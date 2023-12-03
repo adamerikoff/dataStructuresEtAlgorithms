@@ -7,6 +7,7 @@
 ## First Order
 - gradient descent single
 - gradients descent multi
+- steepest descent
  
 ## Second Order
 - Newton's method single

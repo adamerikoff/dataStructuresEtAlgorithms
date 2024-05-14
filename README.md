@@ -1,5 +1,6 @@
 # optimization algorithms
 
+- Euler's Method
 ## Bracketing
 - bisection
 - Fibonacci

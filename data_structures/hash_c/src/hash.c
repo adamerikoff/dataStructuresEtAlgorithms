@@ -1,9 +1,7 @@
-#include <cstddef>
 #include <stdlib.h>
 #include <string.h>
 
 #include "hash.h"
-
 
 static hash_table_item* hash_table_new_item(const char* key, const char* value) {
     hash_table_item* item = malloc(sizeof(hash_table_item));

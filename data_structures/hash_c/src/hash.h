@@ -8,5 +8,3 @@ typedef struct {
     int count;
     htable_element** items;
 } htable;
-
-htable* hash_table_new();

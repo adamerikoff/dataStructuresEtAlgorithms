@@ -84,12 +84,19 @@ static int htable_get_hash(const char* s, const int num_buckets, const int attem
     return (hash_a + (attempt * (hash_b + 1))) % num_buckets;
 }
 
-void htable_insert_element(htable* ht, const char* key, const char* value) {
+void htable_insert(htable* ht, const char* key, const char* value) {
     htable_element* item = htable_new_element(key, value);
     int index = htable_get_hash(item->key, ht->size, 0);
     htable_element* current_item = ht->items[index];
     int i = 1;
     while (current_item != NULL) {
+        if (current_item != &HT_DELETED_ITEM) {
+            if (strcmp(current_item->key, key) == 0) {
+                htable_delete_element(current_item);
+                ht->items[index] = item;
+                return;
+            }
+        }
         index = htable_get_hash(item->key, ht->size, i);
         current_item = ht->items[index];
         i++;
@@ -103,8 +110,10 @@ char* htable_search(htable* ht, const char* key) {
     htable_element* item = ht->items[index];
     int i = 1;
     while(item != NULL) {
-        if (strcmp(item->key, key) == 0) {
-            return item->value;
+        if (item != &HT_DELETED_ITEM) {
+            if (strcmp(item->key, key) == 0) {
+                return item->value;
+            }
         }
         index = htable_get_hash(key, ht->size, i);
         item = ht->items[index];
@@ -124,5 +133,9 @@ void htable_delete(htable* ht, const char* key) {
                 ht->items[index] = &HT_DELETED_ITEM;
             }
         }
+        index = htable_get_hash(key, ht->size, i);
+        item = ht->items[index];
+        i++;
     }
+    ht->count--;
 }

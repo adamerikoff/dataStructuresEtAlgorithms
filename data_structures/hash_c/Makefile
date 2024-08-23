@@ -9,7 +9,7 @@ SRC_DIR = src
 BUILD_DIR = build
 
 # Source files
-SRCS = $(SRC_DIR)/hash.c $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/hash.c $(SRC_DIR)/helper_prime.c $(SRC_DIR)/main.c
 
 # Object files
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

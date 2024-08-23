@@ -3,11 +3,9 @@
 #include <math.h>
 
 #include "hash.h"
+#include "helper_prime.h"
 
-#define HT_PRIME_1 151
-#define HT_PRIME_2 163
-
-static htable_element HT_DELETED_ITEM = {NULL, NULL};
+static htable_element HTABLE_DELETED_ITEM = {NULL, NULL};
 
 static htable_element* htable_new_element(const char* key, const char* value) {
     htable_element* item = malloc(sizeof(htable_element));
@@ -30,13 +28,16 @@ static htable_element* htable_new_element(const char* key, const char* value) {
     return item;
 }
 
-htable* htable_new() {
+static htable* htable_new_sized(const int base_size) {
     htable* ht = malloc(sizeof(htable));
     if (ht == NULL) {
         return NULL;
     }
 
-    ht->size  = 53;
+    ht->base_size = base_size;
+
+    ht->size = next_prime(ht->base_size);
+
     ht->count = 0;
     ht->items = calloc((size_t)ht->size, sizeof(htable_element*));
     if (ht->items == NULL) {
@@ -45,6 +46,10 @@ htable* htable_new() {
     }
 
     return ht;
+}
+
+htable* htable_new() {
+    return htable_new_sized(HTABLE_INITIAL_BASE_SIZE);
 }
 
 static void htable_delete_element(htable_element* item) {
@@ -78,8 +83,8 @@ static int htable_hash(const char* s, const int prime, const int bucket_size) {
 }
 
 static int htable_get_hash(const char* s, const int num_buckets, const int attempt) {
-    const int hash_a = htable_hash(s, HT_PRIME_1, num_buckets);
-    const int hash_b = htable_hash(s, HT_PRIME_2, num_buckets);
+    const int hash_a = htable_hash(s, HTABLE_PRIME_1, num_buckets);
+    const int hash_b = htable_hash(s, HTABLE_PRIME_2, num_buckets);
 
     return (hash_a + (attempt * (hash_b + 1))) % num_buckets;
 }
@@ -90,7 +95,7 @@ void htable_insert(htable* ht, const char* key, const char* value) {
     htable_element* current_item = ht->items[index];
     int i = 1;
     while (current_item != NULL) {
-        if (current_item != &HT_DELETED_ITEM) {
+        if (current_item != &HTABLE_DELETED_ITEM) {
             if (strcmp(current_item->key, key) == 0) {
                 htable_delete_element(current_item);
                 ht->items[index] = item;
@@ -110,7 +115,7 @@ char* htable_search(htable* ht, const char* key) {
     htable_element* item = ht->items[index];
     int i = 1;
     while(item != NULL) {
-        if (item != &HT_DELETED_ITEM) {
+        if (item != &HTABLE_DELETED_ITEM) {
             if (strcmp(item->key, key) == 0) {
                 return item->value;
             }
@@ -127,10 +132,10 @@ void htable_delete(htable* ht, const char* key) {
     htable_element* item = ht->items[index];
     int i = 1;
     while (item != NULL) {
-        if (item != &HT_DELETED_ITEM) {
+        if (item != &HTABLE_DELETED_ITEM) {
             if (strcmp(item->key, key) == 0) {
                 htable_delete_element(item);
-                ht->items[index] = &HT_DELETED_ITEM;
+                ht->items[index] = &HTABLE_DELETED_ITEM;
             }
         }
         index = htable_get_hash(key, ht->size, i);

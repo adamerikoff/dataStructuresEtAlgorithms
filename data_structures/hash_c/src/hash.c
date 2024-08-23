@@ -52,6 +52,42 @@ htable* htable_new() {
     return htable_new_sized(HTABLE_INITIAL_BASE_SIZE);
 }
 
+static void htable_resize(htable* ht, const int base_size) {
+    if (base_size < HTABLE_INITIAL_BASE_SIZE) {
+        return;
+    }
+    htable* new_ht = htable_new_sized(base_size);
+    for (int i = 0; i < ht->size; i++) {
+        htable_element* item = ht->items[i];
+        if (item != NULL && item != &HTABLE_DELETED_ITEM) {
+            htable_insert(new_ht, item->key, item->value);
+        }
+    }
+
+    ht->base_size = new_ht->base_size;
+    ht->count = new_ht->count;
+
+    const int tmp_size = ht->size;
+    ht->size = new_ht->size;
+    new_ht->size = tmp_size;
+
+    htable_element** tmp_items = ht->items;
+    ht->items = new_ht->items;
+    new_ht->items = tmp_items;
+
+    htable_delete_table(new_ht);
+}
+
+static void htable_resize_up(htable* ht) {
+    const int new_size = ht->base_size * 2;
+    htable_resize(ht, new_size);
+}
+
+static void htable_resize_down(htable* ht) {
+    const int new_size = ht->base_size / 2;
+    htable_resize(ht, new_size);
+}
+
 static void htable_delete_element(htable_element* item) {
     if (item == NULL) {
         return;
@@ -90,6 +126,11 @@ static int htable_get_hash(const char* s, const int num_buckets, const int attem
 }
 
 void htable_insert(htable* ht, const char* key, const char* value) {
+    const int load = ht->count * 100 / ht->size;
+    if (load > 70) {
+        htable_resize_up(ht);
+    }
+
     htable_element* item = htable_new_element(key, value);
     int index = htable_get_hash(item->key, ht->size, 0);
     htable_element* current_item = ht->items[index];
@@ -128,6 +169,11 @@ char* htable_search(htable* ht, const char* key) {
 }
 
 void htable_delete(htable* ht, const char* key) {
+    const int load = ht->count * 100 / ht->size;
+    if (load < 10) {
+        htable_resize_down(ht);
+    }
+
     int index = htable_get_hash(key, ht->size, 0);
     htable_element* item = ht->items[index];
     int i = 1;

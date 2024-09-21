@@ -1,17 +1,21 @@
 #!/bin/bash
 
 main="binary_sorting.c"
-random_numbers="random_numbers.txt"
+filename="sorted_numbers.txt"
 output="output.o"
 
-# Compile the C file
+
+sequence=$(seq 999999)
+echo "$sequence" > "$filename"
+echo "The numbers are saved in $filename."
+
 if gcc "$main" -o "$output"; then
     # Check if the random_numbers file exists
-    if [[ -f "$random_numbers" ]]; then
+    if [[ -f "$filename" ]]; then
         # Run the compiled output with the random_numbers as an argument
-        ./"$output" "$random_numbers"
+        ./"$output" "$filename"
     else
-        echo "Error: $random_numbers not found."
+        echo "Error: $filename not found."
         exit 1
     fi
 else
@@ -21,4 +25,5 @@ fi
 
 # Clean up the generated binary
 rm -f "$output"
+# rm -f "$filename"
 echo "Compiled files was removed."

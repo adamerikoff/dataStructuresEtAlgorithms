@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define TOTAL_LINES 999999
+
 void read_lines(char* filename) {
     FILE * file;
     char line[256];

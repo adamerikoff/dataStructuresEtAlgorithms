@@ -1,11 +1,10 @@
 #!/bin/bash
 
 main="main.c"
-hash_table="hash_table.c"
 output="output.o"
 
 # Compile both main.c and hash_table.c
-if gcc "$main" "$hash_table" -o "$output"; then
+if gcc "$main" -o "$output"; then
     ./"$output"
 else
     echo "Compilation failed."

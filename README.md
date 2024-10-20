@@ -1,5 +1,6 @@
 | Algorithms to Implement                  | Done  | Data Structures to Implement             | Done  |
 |------------------------------------------|-------|------------------------------------------|-------|
+| Bubble Sort                              |   ✓   | Atom                                    |   ✓   |
 | Bubble Sort                              |       | Array                                    |       |
 | Insertion Sort                           |       | Singly Linked List                       |       |
 | Selection Sort                           |       | Doubly Linked List                       |       |
@@ -57,7 +58,7 @@
 | Karger’s Algorithm (Min Cut)             |       | Hash Array Mapped Trie (HAMT)            |       |
 | Floyd-Warshall for APSP                  |       | Finger Tree                              |       |
 | Monte Carlo Tree Search                  |       | Suffix Automaton                         |       |
-| Branch and Bound                        |       | Rope (String Data Structure)             |       |
+| Branch and Bound                         |       | Rope (String Data Structure)             |       |
 | Needleman-Wunsch Algorithm (Alignment)   |       | Patricia Trie                            |       |
 | Ukkonen's Algorithm (Suffix Tree)        |       | AA Tree                                  |       |
 | Chained Hashing Algorithm                |       | D-ary Heap                               |       |

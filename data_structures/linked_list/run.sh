@@ -1,10 +1,12 @@
 #!/bin/bash
 
 main="main.c"
-output="output.o"
+libs="list.c"
+output="output"
 
-# Compile both main.c and hash_table.c
-if gcc "$main" -o "$output"; then
+# Compile both main.c and atom.c
+if gcc "$main" "$libs" -o "$output"; then
+    echo "Compilation successful. Running the program..."
     ./"$output"
 else
     echo "Compilation failed."

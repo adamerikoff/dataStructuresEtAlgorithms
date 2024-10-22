@@ -1,8 +1,9 @@
 | Algorithms to Implement                  | Done  | Data Structures to Implement             | Done  |
 |------------------------------------------|-------|------------------------------------------|-------|
-| Bubble Sort                              |   ✓   | Atom                                    |   ✓   |
-| Bubble Sort                              |       | Array                                    |       |
-| Insertion Sort                           |       | Singly Linked List                       |       |
+| Selection Sort                           |   ✓   | Atom                                     |   ✓   |
+| Quick Sort                               |   ✓   | Set                                      |   ✓   |
+| Bubble Sort                              |       | Dynamic Array                            |       |
+| Insertion Sort                           |       | Singly Linked List                       |   ✓   |
 | Selection Sort                           |       | Doubly Linked List                       |       |
 | Merge Sort                               |       | Circular Linked List                     |       |
 | Quick Sort                               |       | Stack                                    |       |

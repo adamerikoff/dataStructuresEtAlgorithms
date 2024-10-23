@@ -2,7 +2,7 @@
 |------------------------------------------|-------|------------------------------------------|-------|
 | Selection Sort                           |   ✓   | Atom                                     |   ✓   |
 | Quick Sort                               |   ✓   | Set                                      |   ✓   |
-| Bubble Sort                              |       | Dynamic Array                            |       |
+| Bubble Sort                              |       | Dynamic Array                            |   ✓   |
 | Insertion Sort                           |       | Singly Linked List                       |   ✓   |
 | Selection Sort                           |       | Doubly Linked List                       |       |
 | Merge Sort                               |       | Circular Linked List                     |       |

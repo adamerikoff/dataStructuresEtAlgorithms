@@ -9,7 +9,7 @@
 | Quick Sort                               |       | Stack                                    |   ✓   |
 | Heap Sort                                |       | Queue                                    |   ✓   |
 | Radix Sort                               |       | Priority Queue                           |   ✓   |
-| Depth First Search (DFS)                 |       | Hash Table                               |       |
+| Depth First Search (DFS)                 |       | Hash Table                               |   ✓   |
 | Breadth First Search (BFS)               |       | Binary Search Tree (BST)                 |   ✓   |
 | Dijkstra’s Algorithm                     |       | AVL Tree                                 |       |
 | Bellman-Ford Algorithm                   |       | Red-Black Tree                           |       |

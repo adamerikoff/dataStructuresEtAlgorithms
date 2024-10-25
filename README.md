@@ -7,7 +7,7 @@
 | Selection Sort                           |       | Doubly Linked List                       |       |
 | Merge Sort                               |       | Circular Linked List                     |       |
 | Quick Sort                               |       | Stack                                    |   ✓   |
-| Heap Sort                                |       | Queue                                    |       |
+| Heap Sort                                |       | Queue                                    |   ✓   |
 | Radix Sort                               |       | Priority Queue                           |       |
 | Depth First Search (DFS)                 |       | Hash Table                               |       |
 | Breadth First Search (BFS)               |       | Binary Search Tree (BST)                 |       |

@@ -6,7 +6,7 @@
 | Insertion Sort                           |       | Singly Linked List                       |   ✓   |
 | Selection Sort                           |       | Doubly Linked List                       |       |
 | Merge Sort                               |       | Circular Linked List                     |       |
-| Quick Sort                               |       | Stack                                    |       |
+| Quick Sort                               |       | Stack                                    |   ✓   |
 | Heap Sort                                |       | Queue                                    |       |
 | Radix Sort                               |       | Priority Queue                           |       |
 | Depth First Search (DFS)                 |       | Hash Table                               |       |

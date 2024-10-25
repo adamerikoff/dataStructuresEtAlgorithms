@@ -8,9 +8,9 @@
 | Merge Sort                               |       | Circular Linked List                     |       |
 | Quick Sort                               |       | Stack                                    |   ✓   |
 | Heap Sort                                |       | Queue                                    |   ✓   |
-| Radix Sort                               |       | Priority Queue                           |       |
+| Radix Sort                               |       | Priority Queue                           |   ✓   |
 | Depth First Search (DFS)                 |       | Hash Table                               |       |
-| Breadth First Search (BFS)               |       | Binary Search Tree (BST)                 |       |
+| Breadth First Search (BFS)               |       | Binary Search Tree (BST)                 |   ✓   |
 | Dijkstra’s Algorithm                     |       | AVL Tree                                 |       |
 | Bellman-Ford Algorithm                   |       | Red-Black Tree                           |       |
 | Floyd-Warshall Algorithm                 |       | Min-Heap                                 |       |
